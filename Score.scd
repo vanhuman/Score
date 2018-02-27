@@ -648,9 +648,10 @@ s.waitForBoot({
 								~score[sec][evt].params.lp,
 								~score[sec][evt].params.att,
 								~score[sec][evt].params.rel,
-								~score[sec][evt].params.lev
+								~score[sec][evt].params.lev,
+								mono: ~score[sec][evt].params.mono
 							);
-							scoreProc[sec][evt].start(mono: ~score[sec][evt].params.mono);
+							scoreProc[sec][evt].start(altOutLev: ~cfg.altOutputLevel);
 						}
 						{~score[sec][evt].type == \DiskPlayStop}
 						{
@@ -1900,7 +1901,8 @@ s.waitForBoot({
 		.states_([ ["test",Color.black,Color.white], ["stop",Color.white,Color.black] ])
 		.action_({ |button|
 			if(button.value == 1, {
-				soundCheckSynth = DiskPlayer.new(s, ~cfg.libraryBase++~cfg.soundCheck, ~sampleOutBus[0], sampleGroup, 1).start;
+				soundCheckSynth = DiskPlayer.new(s, ~cfg.libraryBase++~cfg.soundCheck,
+					~sampleOutBus[0], sampleGroup, 1).start(altOutLev: ~cfg.altOutputLevel);
 			},{
 				soundCheckSynth.remove;
 		}) })

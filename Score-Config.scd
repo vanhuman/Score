@@ -83,6 +83,7 @@ if(~pID.isNil, { ~pID = 4 }); // project ID, index into project event
 	recordingTail: 5, 				// delay for stopping recording
 	ampPitchTrack: 0, 			// whether to show amp and pitch tracking window (for now only for Untitled For Anne)
 	serverMeter: 0, 				// whether to show the meter window
+	altOutputLevel: 0, 			// level for alternative output (for recording for example)
 
 	project: ~project.name[~pID],
 	title: ~project.title[~pID],
